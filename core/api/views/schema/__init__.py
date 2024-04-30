@@ -1,1 +1,0 @@
-from core.api.views.schema.teacher.main import teacher_schema_base, teacher_schema_update, teacher_schema_get, teacher_schema_create
