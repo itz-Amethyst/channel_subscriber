@@ -21,7 +21,7 @@ INSTALLED_APPS = [
 
     # Internal
     'core',
-    'school',
+    'channel_subscriber',
 ]
 
 REST_FRAMEWORK = {}

@@ -20,7 +20,8 @@ urlpatterns = [
     path("account/" , include("core.api.routers.jwt")) ,
     # path("auth/jwt/create/", Custom.as_view()),
     re_path(r"^auth/jwt/create/?", Custom.as_view(), name="jwt-create"),
-    path("channel/" , include("channel_subscriber.api.routers.school")),
+    path("profile/" , include("core.api.routers.profile")) ,
+    path("channel/" , include("channel_subscriber.api.routers.channel")),
     path("general/", include("kernel.general.routers.main")),
 
 
