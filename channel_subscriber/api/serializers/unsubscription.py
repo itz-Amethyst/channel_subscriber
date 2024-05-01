@@ -2,11 +2,15 @@ from rest_framework import serializers
 from channel_subscriber.models import Subscription, Channel
 from django.utils.translation import gettext_lazy as _
 
-class SubscriptionDeleteSerializer(serializers.Serializer):
+class SubscriptionDeleteSerializer(serializers.ModelSerializer):
     channel_id = serializers.PrimaryKeyRelatedField(
         queryset=Channel.objects.all(),
         help_text=_("The ID of the channel to unsubscribe from."),
     )
+
+    class Meta:
+        model = Subscription
+        fields = ['channel_id']
 
     def validate(self, data):
         request = self.context.get("request")

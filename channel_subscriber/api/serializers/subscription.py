@@ -24,7 +24,7 @@ class SubscriptionCreateSerializer(serializers.ModelSerializer):
 
         channel = data["target"]  # `target` maps from `channel_id`
 
-        if channel.owner != subscriber:
+        if channel.owner == subscriber:
             # Validate that the subscriber isn't trying to subscribe to their own channel
             raise serializers.ValidationError(
                 {"channel_id": _("You can only subscribe to channels owned by other users.")}

@@ -15,6 +15,7 @@ from channel_subscriber.models import  Subscription
 class SubscriptionViewSet(GenericViewSet , ListModelMixin , CreateModelMixin , RetrieveModelMixin , UpdateModelMixin ,
                     DestroyModelMixin):
     permission_classes = [IsAuthenticated]
+    http_method_names = ["post", "delete"]
 
     def get_serializer_context( self ):
         return {"request": self.request , "user": self.request.user}
@@ -36,7 +37,10 @@ class SubscriptionViewSet(GenericViewSet , ListModelMixin , CreateModelMixin , R
         return Response(serializer.data , status = status.HTTP_201_CREATED , headers = headers)
 
     def destroy( self , request , *args , **kwargs ):
-        serializer = self.get_serializer(data = request.data)
+        data = {
+            "channel_id": kwargs.get('pk')
+        }
+        serializer = self.get_serializer(data = data)
         serializer.is_valid(raise_exception = True)  # Ensure the request is valid
 
         # Unsubscribe by deleting the corresponding Subscription
