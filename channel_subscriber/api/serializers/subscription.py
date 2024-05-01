@@ -13,7 +13,7 @@ class SubscriptionCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Subscription
-        fields = ["channel_id"]  # No explicit 'subscriber'; it comes from the context
+        fields = ["channel_id"]
 
     def validate(self, data):
         request = self.context.get("request")
