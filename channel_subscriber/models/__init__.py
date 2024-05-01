@@ -1,2 +1,2 @@
-from .channel import Channel
-from .subscription import Subscription
+from channel_subscriber.models.channel import Channel
+from channel_subscriber.models.subscription import Subscription
