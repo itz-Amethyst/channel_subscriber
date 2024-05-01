@@ -3,9 +3,7 @@ DJOSER = {
     "PASSWORD_RESET_CONFIRM_RETYPE": True,
     "PASSWORD_RESET_SHOW_EMAIL_NOT_FOUND": True,
     'EXCLUDE_FROM_API': ['users'],
-    "SERIALIZERS": {
-        "user_create": "core.api.serializers.user_register.UserCreateSerializer",
-    },
+
     "PERMISSIONS": {
         'user_create': ['rest_framework.permissions.AllowAny'],
         'password_reset': ['rest_framework.permissions.AllowAny'],
