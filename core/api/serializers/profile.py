@@ -5,4 +5,4 @@ class ProfileSerializer(serializers.ModelSerializer):
     # todo
     class Meta:
         model = Profile
-        fields = ["user", "channel_count", "subscriber_count", "subscription_count", "bio"]
+        fields = ["user", "subscriber_count", "subscription_count", "bio"]

@@ -12,9 +12,6 @@ class Profile(models.Model):
         on_delete = models.CASCADE
     )
 
-    channel_count: models.PositiveIntegerField = models.PositiveIntegerField(
-        default = 0 ,
-    )
     subscriber_count: models.PositiveIntegerField = models.PositiveIntegerField(
         default = 0 ,
     )

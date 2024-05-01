@@ -45,24 +45,3 @@ class CoreModel(models.Model):
 
     class Meta:
         abstract = True
-
-    def clean( self , *args , **kwargs ):
-        """
-            Validate the instance before saving.
-
-            Raises:
-                ValidationError: If the created_at or modified_at time is in the future.
-        """
-        now = timezone.now()
-
-        if self.created_at < now:
-            raise ValidationError(
-                _('The created at time must be greater than or equal to the current time.') ,
-                code = 'invalid'
-            )
-
-        if self.modified_at < now:
-            raise ValidationError(
-                _('The modified at time must be greater than or equal to the current time.') ,
-                code = 'invalid'
-            )
