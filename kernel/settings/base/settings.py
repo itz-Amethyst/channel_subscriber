@@ -15,9 +15,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'debug_toolbar',
     'rest_framework' ,
-    # To standardize errors
-    "drf_standardized_errors",
-    "django_filters",
 
     # Internal
     'core',

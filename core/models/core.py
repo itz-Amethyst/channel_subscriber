@@ -10,20 +10,20 @@ class CoreModel(models.Model):
         CoreModel represents a base model providing common fields and validation logic for other models.
 
         Attributes:
-            uuid (models.UUIDField): Unique identifier for the instance.
+            # uuid (models.UUIDField): Unique identifier for the instance.
             created_at (models.DateTimeField): The time the instance was created.
             modified_at (models.DateTimeField): The time the instance was last modified.
     """
 
     # Could be considered as id
-    uuid: models.UUIDField = models.UUIDField(
-        default = uuid.uuid4 ,
-        editable = False ,
-        verbose_name = _("UUID") ,
-        help_text = _("Unique identifier for the class.") ,
-        db_comment = _("Unique identifier for the class.") ,
-        db_column = _("UUID") ,
-    )
+    # uuid: models.UUIDField = models.UUIDField(
+    #     default = uuid.uuid4 ,
+    #     editable = False ,
+    #     verbose_name = _("UUID") ,
+    #     help_text = _("Unique identifier for the class.") ,
+    #     db_comment = _("Unique identifier for the class.") ,
+    #     db_column = _("UUID") ,
+    # )
 
     created_at: models.DateTimeField = models.DateTimeField(
         verbose_name = _("Created At") ,
