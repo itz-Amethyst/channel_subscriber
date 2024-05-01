@@ -95,11 +95,14 @@ class Channel(CoreModel):
                 {'title': _("The title cannot be empty.")}
             )
 
-        # Check if there's another channel with the same title and owner
-        if Channel.objects.filter(title=self.title, owner=self.owner).exists():
-            raise ValidationError(
-                {'title': _("A channel with this title already exists for this owner.")}
-            )
+        # Check if there's another channel with the same title and owner,
+        if not self._state.adding:  # This is an update to an existing instance
+            existing_query = Channel.objects.filter(title = self.title , owner = self.owner).exclude(id = self.id)
+
+            if existing_query.exists():
+                raise ValidationError(
+                    {'title': _("A channel with this title already exists for this owner.")}
+                )
 
         # Optional: Check if content is too long (e.g., limit to 1000 characters)
         max_content_length = 1000

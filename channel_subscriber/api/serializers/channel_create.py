@@ -22,3 +22,14 @@ class ChannelCreateSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({"title": _("A channel with this title already exists for this owner.")})
 
         return data
+
+
+    def create(self, validated_data):
+        request = self.context.get("request")
+        if not request or not request.user.is_authenticated:
+            raise serializers.ValidationError({"error": "User must be authenticated."})
+
+        # Set the owner to the current authenticated user
+        validated_data["owner"] = request.user
+
+        return super().create(validated_data)
