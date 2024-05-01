@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     # Internal
     'core',
     'channel_subscriber',
+    'tasks'
 ]
 
 REST_FRAMEWORK = {}
